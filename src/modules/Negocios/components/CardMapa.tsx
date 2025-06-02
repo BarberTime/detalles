@@ -1,23 +1,40 @@
-"use client"
-import React from "react"
-import { Box, Button, Dialog, DialogTitle, DialogContent, IconButton, Typography, useTheme, useMediaQuery } from "@mui/material"
-import { Close, Navigation } from "@mui/icons-material"
-import { Map, Marker } from "pigeon-maps"
+"use client";
+import React from "react";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
+import { Close, Navigation } from "@mui/icons-material";
+import { Map, Marker } from "pigeon-maps";
+import { NegocioType } from "../types/NegocioType";
 
 interface CardMapaProps {
-  latitud: number
-  longitud: number
-  businessName?: string
+  negocio: NegocioType;
 }
 
-export function CardMapa({ latitud, longitud, businessName = "Ubicación" }: CardMapaProps) {
-  const [open, setOpen] = React.useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+export function CardMapa({ negocio }: CardMapaProps) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const latitud = React.useMemo(
+    () => Number(negocio.latitud),
+    [negocio.latitud]
+  );
+  const longitud = React.useMemo(
+    () => Number(negocio.longitud),
+    [negocio.longitud]
+  );
+  console.log("Coordenadas del negocio:", latitud, longitud);
   return (
     <Box
       sx={{
@@ -48,18 +65,14 @@ export function CardMapa({ latitud, longitud, businessName = "Ubicación" }: Car
             alignItems: "center",
           }}
         >
-         <Map
-  width={isMobile ? 300 : 240} // Usa un número, no un string
-  height={295}
-  defaultCenter={[latitud, longitud]}
-  defaultZoom={13}
-  onClick={handleOpen}
->
-            <Marker
-              width={80}
-              anchor={[latitud, longitud]}
-              color="#dc2626"
-            />
+          <Map
+            width={isMobile ? 300 : 240} // Usa un número, no un string
+            height={295}
+            defaultCenter={[latitud, longitud]}
+            defaultZoom={14}
+            onClick={handleOpen}
+          >
+            <Marker width={80} anchor={[latitud, longitud]} color="#dc2626" />
           </Map>
         </Box>
         <Button
@@ -89,22 +102,22 @@ export function CardMapa({ latitud, longitud, businessName = "Ubicación" }: Car
         PaperProps={{
           sx: {
             borderRadius: 3,
-            maxHeight: '90vh',
+            maxHeight: "90vh",
           },
         }}
       >
         <DialogTitle
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
             pb: 2,
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Navigation sx={{ color: '#dc2626' }} />
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Navigation sx={{ color: "#dc2626" }} />
             <Typography variant="h5" sx={{ fontWeight: 700 }}>
-              Ubicación de {businessName}
+              Ubicación de {negocio.nombre}
             </Typography>
           </Box>
           <IconButton onClick={handleClose}>
@@ -117,14 +130,14 @@ export function CardMapa({ latitud, longitud, businessName = "Ubicación" }: Car
             sx={{
               height: 400,
               borderRadius: 2,
-              overflow: 'hidden',
+              overflow: "hidden",
             }}
           >
             <Map
               width={600}
               height={400}
               defaultCenter={[latitud, longitud]}
-              defaultZoom={14}
+              defaultZoom={16}
             >
               <Marker
                 width={100}
@@ -134,18 +147,18 @@ export function CardMapa({ latitud, longitud, businessName = "Ubicación" }: Car
             </Map>
           </Box>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
             <Button
               variant="contained"
               onClick={handleClose}
               sx={{
-                backgroundColor: '#dc2626',
+                backgroundColor: "#dc2626",
                 px: 4,
                 py: 1.5,
                 borderRadius: 2,
                 fontWeight: 600,
-                '&:hover': {
-                  backgroundColor: '#b91c1c',
+                "&:hover": {
+                  backgroundColor: "#b91c1c",
                 },
               }}
             >
@@ -155,5 +168,5 @@ export function CardMapa({ latitud, longitud, businessName = "Ubicación" }: Car
         </DialogContent>
       </Dialog>
     </Box>
-  )
+  );
 }

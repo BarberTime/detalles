@@ -5,20 +5,19 @@ import { notFound } from "next/navigation";
 const businessData = {
   "monckey-barber": {
     id: "monckey-barber",
-    name: "Monckey Barber",
-    address: "Av. Periferica nro 505",
-    phone: "+591 8523714",
-    email: "info@monckeybarber.com",
-    image:
+    nombre: "Monckey Barber",
+    direccion: "Av. Periferica nro 505",
+    telefono: "+591 8523714",
+    imagen:
       "https://img.freepik.com/vector-premium/logo-barberia-calavera_43623-577.jpg",
-    description:
+    descripcion:
       "La mejor barbería de la ciudad con más de 10 años de experiencia. Ofrecemos servicios de calidad con los mejores profesionales.",
-    hours: {
+    horas: {
       "Lunes - Viernes": "9:00 AM - 8:00 PM",
       Sábado: "9:00 AM - 6:00 PM",
       Domingo: "10:00 AM - 4:00 PM",
     },
-    services: [
+    servicios: [
       { name: "Corte Clásico", price: "25 Bs", duration: "30 min" },
       { name: "Corte + Barba", price: "40 Bs", duration: "45 min" },
       { name: "Afeitado Tradicional", price: "20 Bs", duration: "25 min" },
@@ -26,7 +25,7 @@ const businessData = {
       { name: "Tratamiento Capilar", price: "35 Bs", duration: "40 min" },
       { name: "Peinado Especial", price: "30 Bs", duration: "35 min" },
     ],
-    barbers: [
+    barberos: [
       {
         name: "Carlos Mendoza",
         specialty: "Cortes Clásicos",
