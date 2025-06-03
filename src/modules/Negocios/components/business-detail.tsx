@@ -129,53 +129,20 @@ export const BusinessDetail = ({
               mb: 2,
             }}
           >
-            <Box sx={{ flex: 1 }}>
-              <Typography variant="h5" fontWeight="bold" gutterBottom>
-                {negocio.nombre}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
-                {negocio.descripcion}
-              </Typography>
+            <Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
+              <Box sx={{ textAlign: "center" }}>
+                <Typography variant="h4" fontWeight="bold" gutterBottom>
+                  {negocio.nombre}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" gutterBottom>
+                  {negocio.descripcion}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>
 
         {/* Servicios */}
-        <Box sx={{ bgcolor: "white", borderRadius: 2 }}>
-          <Box sx={{ p: 3, borderBottom: "1px solid #e0e0e0" }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="h6" fontWeight="bold">
-                Servicios
-              </Typography>
-              <Button variant="text" size="small" sx={{ color: "#666" }}>
-                Buscar servicio
-              </Button>
-            </Box>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              Servicios más populares
-            </Typography>
-          </Box>
-
-          <Box sx={{ p: 0 }}>aqui ira Servicios</Box>
-
-          <Box
-            sx={{ p: 2, textAlign: "center", borderTop: "1px solid #e0e0e0" }}
-          >
-            <Button
-              variant="text"
-              sx={{ color: "#666" }}
-              startIcon={<ChevronUp />}
-            >
-              Mostrar menos
-            </Button>
-          </Box>
-        </Box>
       </Box>
 
       {/* Sidebar */}
@@ -186,35 +153,8 @@ export const BusinessDetail = ({
         <CardMapa negocio={negocio} />
 
         {/* Quiénes Somos */}
-        <Box sx={{ bgcolor: "white", p: 2, borderRadius: 2 }}>
-          <Typography
-            variant="subtitle2"
-            fontWeight="bold"
-            color="#ff5722"
-            gutterBottom
-          >
-            QUIÉNES SOMOS
-          </Typography>
-          <Typography
-            variant="body2"
-            color="primary"
-            sx={{ cursor: "pointer" }}
-          >
-            Ven y Crea tu estilo...
-          </Typography>
-        </Box>
 
         {/* Empleados */}
-        <Box sx={{ bgcolor: "white", p: 2, borderRadius: 2 }}>
-          <Typography
-            variant="subtitle2"
-            fontWeight="bold"
-            color="#ff5722"
-            gutterBottom
-          >
-            EMPLEADOS
-          </Typography>
-        </Box>
 
         {/* Horario */}
         <Box sx={{ bgcolor: "white", p: 2, borderRadius: 2 }}>
@@ -224,7 +164,7 @@ export const BusinessDetail = ({
             color="#ff5722"
             gutterBottom
           >
-            HORARIO DE APERTURA
+            HORARIO DE ATENCION
           </Typography>
           <Typography variant="body2" fontWeight="600" gutterBottom>
             Hoy
@@ -244,31 +184,8 @@ export const BusinessDetail = ({
         </Box>
 
         {/* Información del Negocio */}
-        <Box sx={{ bgcolor: "white", p: 2, borderRadius: 2 }}>
-          <Typography
-            variant="subtitle2"
-            fontWeight="bold"
-            color="#ff5722"
-            gutterBottom
-          >
-            INFORMACIÓN DEL NEGOCIO
-          </Typography>
-          <Typography variant="body2" fontWeight="600" gutterBottom>
-            {negocio.nombre}
-          </Typography>
-        </Box>
 
         {/* Redes Sociales */}
-        <Box sx={{ bgcolor: "white", p: 2, borderRadius: 2 }}>
-          <Typography
-            variant="subtitle2"
-            fontWeight="bold"
-            color="#ff5722"
-            gutterBottom
-          >
-            REDES SOCIALES
-          </Typography>
-        </Box>
 
         {/* Información para el Consumidor */}
       </Box>

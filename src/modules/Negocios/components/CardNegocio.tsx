@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { LocationOn, Phone, Star, Schedule } from "@mui/icons-material";
 import { NegocioType } from "../types/NegocioType";
+import { useRouter } from "next/router";
 interface CardNegocioProps {
   negocio: NegocioType;
 }
@@ -20,8 +21,7 @@ interface CardNegocioProps {
 export function CardNegocio({ negocio }: CardNegocioProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  
-  
+  const router = useRouter();
 
   return (
     <Card
@@ -146,6 +146,9 @@ export function CardNegocio({ negocio }: CardNegocioProps) {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => {
+              router.push(`/Negocios/${negocio.id_negocio}`);
+            }}
             sx={{
               mt: 1,
               py: 1.5,
