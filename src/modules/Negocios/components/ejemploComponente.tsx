@@ -9,6 +9,7 @@ interface EjemploComponenteProps {
 }
 
 const EjemploComponente = () => {
+  /*
   return (
     <Box
       sx={{
@@ -88,4 +89,5 @@ const EjemploComponente = () => {
   );
 };
 
-export default EjemploComponente;
+export default EjemploComponente;*/
+};

@@ -26,3 +26,15 @@ export interface HorarioType {
   hora_inicio: string;
   hora_fin: string;
 }
+
+export interface ServicioType {
+  id_servicio: string;
+  nombre: string;
+  negocio: string;
+  categoria: string;
+  precio: string;
+  descripcion: string;
+  duracion: number;
+  imagen: string;
+  fecha_registro: string;
+}

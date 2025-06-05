@@ -8,10 +8,12 @@ import { Header } from "@/modules/PaginaWeb/components/header";
 import { Carrusel } from "@/modules/PaginaWeb/components/carrusel";
 import { NegocioType } from "@/modules/Negocios/types/NegocioType";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [negocios, setNegocios] = useState<NegocioType[]>([]);
   const [totalNegocios, setTotalNegocios] = useState(0);
+  const router = useRouter();
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/negocio/`)
       .then((res) => res.json())
@@ -20,6 +22,10 @@ export default function Home() {
         const totalPages = datos.total;
       });
   }, []);
+  const handleNavigation = () => {
+    router.push("/Negocios");
+  };
+
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "white" }}>
       {/* Header principal */}
@@ -43,6 +49,7 @@ export default function Home() {
           imagen_grande="https://img.freepik.com/foto-gratis/hombre-revisando-telefono-mientras-corta-pelo_23-2148242784.jpg?ga=GA1.1.527834109.1746621935&w=740"
           informacion="Que las filas no te quiten tu tiempo, reserva ahora mismo y disfruta de un servicio de calidad sin esperas."
           reserva="Ver Barberías"
+          onClick={handleNavigation}
         />
 
         <CardTuNegocio
@@ -51,6 +58,7 @@ export default function Home() {
           informacion="Empieza a gestionar tu negocio más rápido y fácilmente con Barber_Time. Todo en el mismo lugar, desde reservas hasta pagos."
           reserva="Suscribe tu Negocio"
           reversed={true}
+          onClick={handleNavigation}
         />
 
         <CardTuNegocio
@@ -58,6 +66,7 @@ export default function Home() {
           imagen_grande="https://img.freepik.com/foto-gratis/herramientas-profesion-peluquero_23-2150668471.jpg?ga=GA1.1.527834109.1746621935&semt=ais_hybrid&w=740"
           informacion="Obtén una cotización personalizada para tu negocio y descubre cómo podemos ayudarte a crecer."
           reserva="Contáctanos"
+          onClick={handleNavigation}
         />
       </Box>
 
